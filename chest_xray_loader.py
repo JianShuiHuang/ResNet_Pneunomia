@@ -24,7 +24,12 @@ def getData(mode):
         for i in range(len(train_dataset)):
             train_data.append(train_dataset.imgs[i][0])
             train_label.append(train_dataset.imgs[i][1])        
-                     
+
+        state = np.random.get_state()
+        np.random.shuffle(train_data)
+        np.random.set_state(state)
+        np.random.shuffle(train_label)
+
         return np.squeeze(train_data), np.squeeze(train_label)
     
     else:
