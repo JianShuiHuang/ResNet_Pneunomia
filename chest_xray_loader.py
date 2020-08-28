@@ -40,7 +40,12 @@ def getData(mode):
         
         for i in range(len(test_dataset)):
             test_data.append(test_dataset.imgs[i][0])
-            test_label.append(test_dataset.imgs[i][1])        
+            test_label.append(test_dataset.imgs[i][1])
+
+        state = np.random.get_state()
+        np.random.shuffle(test_data)
+        np.random.set_state(state)
+        np.random.shuffle(test_label)     
              
         return np.squeeze(test_data), np.squeeze(test_label)
         
